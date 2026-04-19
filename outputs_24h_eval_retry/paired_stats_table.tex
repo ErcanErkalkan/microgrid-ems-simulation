@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Paired statistical comparison table.}
+\label{tab:stats_auto}
+\begin{tabular}{lcccccccccc}
+\toprule
+metric & comparison & n\_pairs & mean\_paired\_diff & ci95\_lo & ci95\_hi & p\_value & effect\_size & effect\_name & direction & p\_holm \\
+\midrule
+throughput\_kwh & Proposed vs FBRL & 8 & -69.42641905265175 & -72.12513422476755 & -66.51617358882264 & 6.422926882616285e-10 & -16.1047425856239 & Cohen\_dz & left\_better & 3.853756129569771e-09 \\
+efc & Proposed vs FBRL & 8 & -0.3471320952632587 & -0.3606256711238377 & -0.3325808679441132 & 6.422926882616285e-10 & -16.1047425856239 & Cohen\_dz & left\_better & 3.853756129569771e-09 \\
+t\_high\_soc\_h & Proposed vs FBRL & 8 & 0.0 & 0.0 & 0.0 & 1.0 & 0.0 & NoDifference & tie & 1.0 \\
+ceq\_q95 & Proposed vs FBRL & 8 & -0.0665251595682755 & -0.07792341248961294 & -0.050802408736866964 & 0.0078125 & -1.0 & Cliff\_delta & left\_better & 0.03125 \\
+t\_high\_c\_h & Proposed vs FBRL & 8 & 0.0 & 0.0 & 0.0 & 1.0 & 0.0 & NoDifference & tie & 1.0 \\
+idod & Proposed vs FBRL & 8 & -0.0038809771634637277 & -0.006210289730368679 & -0.0023117259206451263 & 0.0078125 & -0.625 & Cliff\_delta & left\_better & 0.03125 \\
+\bottomrule
+\end{tabular}
+\end{table}

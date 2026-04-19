@@ -1,0 +1,21 @@
+metric,comparison,n_pairs,mean_paired_diff,ci95_lo,ci95_hi,p_value,effect_size,effect_name,direction,p_holm
+ramp95_kw_per_min,Proposed vs NC,1,-0.07050969739122692,-0.07050969739122692,-0.07050969739122692,1.0,-1.0,Cliff_delta,left_better,1.0
+cap_violation_pct_total,Proposed vs NC,1,-0.2777777777777778,-0.2777777777777778,-0.2777777777777778,1.0,-1.0,Cliff_delta,left_better,1.0
+throughput_kwh,Proposed vs NC,1,0.01707339425699625,0.01707339425699625,0.01707339425699625,1.0,1.0,Cliff_delta,right_better,1.0
+idod,Proposed vs NC,1,1.6149628335451827e-08,1.6149628335451827e-08,1.6149628335451827e-08,1.0,1.0,Cliff_delta,right_better,1.0
+flip_per_day,Proposed vs NC,1,8.0,8.0,8.0,1.0,1.0,Cliff_delta,right_better,1.0
+ramp95_kw_per_min,Proposed vs GR,1,0.0,0.0,0.0,1.0,0.0,Cliff_delta,right_better,1.0
+cap_violation_pct_total,Proposed vs GR,1,0.0,0.0,0.0,1.0,0.0,Cliff_delta,right_better,1.0
+throughput_kwh,Proposed vs GR,1,0.0014594337050549931,0.0014594337050549931,0.0014594337050549931,1.0,1.0,Cliff_delta,right_better,1.0
+idod,Proposed vs GR,1,2.64293780262262e-09,2.64293780262262e-09,2.64293780262262e-09,1.0,1.0,Cliff_delta,right_better,1.0
+flip_per_day,Proposed vs GR,1,0.0,0.0,0.0,1.0,0.0,Cliff_delta,right_better,1.0
+ramp95_kw_per_min,Proposed vs RS,1,6.488026944634669,6.488026944634669,6.488026944634669,1.0,1.0,Cliff_delta,right_better,1.0
+cap_violation_pct_total,Proposed vs RS,1,0.0,0.0,0.0,1.0,0.0,Cliff_delta,right_better,1.0
+throughput_kwh,Proposed vs RS,1,-18.77611394155281,-18.77611394155281,-18.77611394155281,1.0,-1.0,Cliff_delta,left_better,1.0
+idod,Proposed vs RS,1,-0.00028339390162686524,-0.00028339390162686524,-0.00028339390162686524,1.0,-1.0,Cliff_delta,left_better,1.0
+flip_per_day,Proposed vs RS,1,-536.0,-536.0,-536.0,1.0,-1.0,Cliff_delta,left_better,1.0
+ramp95_kw_per_min,Proposed vs FBRL,1,7.0421170130252415,7.0421170130252415,7.0421170130252415,1.0,1.0,Cliff_delta,right_better,1.0
+cap_violation_pct_total,Proposed vs FBRL,1,0.0,0.0,0.0,1.0,0.0,Cliff_delta,right_better,1.0
+throughput_kwh,Proposed vs FBRL,1,-17.824686905389193,-17.824686905389193,-17.824686905389193,1.0,-1.0,Cliff_delta,left_better,1.0
+idod,Proposed vs FBRL,1,-0.00030017853686245283,-0.00030017853686245283,-0.00030017853686245283,1.0,-1.0,Cliff_delta,left_better,1.0
+flip_per_day,Proposed vs FBRL,1,-528.0,-528.0,-528.0,1.0,-1.0,Cliff_delta,left_better,1.0

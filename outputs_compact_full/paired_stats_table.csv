@@ -1,0 +1,7 @@
+metric,comparison,n_pairs,mean_paired_diff,ci95_lo,ci95_hi,p_value,effect_size,effect_name,direction,p_holm
+throughput_kwh,Proposed vs FBRL,4,-17.465804621110543,-17.824686905389193,-17.106922336831893,0.125,-1.0,Cliff_delta,left_better,0.75
+efc,Proposed vs FBRL,4,-0.08732902310555271,-0.08912343452694596,-0.08553461168415946,0.125,-1.0,Cliff_delta,left_better,0.75
+t_high_soc_h,Proposed vs FBRL,4,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+ceq_q95,Proposed vs FBRL,4,-0.07229349006222542,-0.07242583935426028,-0.07216114077019056,0.125,-1.0,Cliff_delta,left_better,0.75
+t_high_c_h,Proposed vs FBRL,4,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+idod,Proposed vs FBRL,4,-0.00028626130255492854,-0.00030017853686245283,-0.00027234406824740425,0.125,-1.0,Cliff_delta,left_better,0.75

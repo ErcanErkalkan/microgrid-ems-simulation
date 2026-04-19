@@ -1,0 +1,12 @@
+result_dir,category,signature_group,hours,seed_count,has_runtime,has_publication,publication_holdout_valid,proposed_ramp95,proposed_cap_violation_pct,proposed_throughput_kwh
+outputs_24h_eval_retry,redundant_retry,1,24.0,2,True,False,,9.323152269934997,0.0,4.731062186988869
+publication_smoke,smoke_regression,5,6.0,1,False,True,False,9.456311658167252,0.0,0.0185328279620512
+publication_smoke2,smoke_regression,5,6.0,1,False,True,False,9.456311658167252,0.0,0.0185328279620512
+publication_smoke3,smoke_regression,6,6.0,1,True,True,False,9.456311658167252,0.0,0.0170733942569962
+publication_smoke4,smoke_regression,6,6.0,1,True,True,False,9.456311658167252,0.0,0.0170733942569962
+review_codex_smoke,smoke_regression,6,6.0,1,True,False,False,9.456311658167252,0.0,0.0170733942569962
+review_codex_smoke_pub,smoke_regression,6,6.0,1,True,True,False,9.456311658167252,0.0,0.0170733942569962
+review_codex_smoke_v2,smoke_regression,6,6.0,1,True,True,False,9.456311658167252,0.0,0.0170733942569962
+review_smoke,smoke_regression,7,6.0,1,False,False,False,9.456311658167252,0.0,0.0272894301923812
+review_smoke_after_fix,smoke_regression,7,6.0,1,False,False,False,9.456311658167252,0.0,0.0272894301923812
+review_smoke_after_fix2,smoke_regression,7,6.0,1,False,False,False,9.456311658167252,0.0,0.0272894301923812

@@ -1,0 +1,6 @@
+Category,Directories,Examples,Role
+primary_postfix,3,"outputs_24h_core_eval, outputs_compact_full, outputs_medium_full",Independent benchmark evidence
+incomplete,1,outputs_24h_eval,Discarded incomplete early run
+redundant_retry,1,outputs_24h_eval_retry,Redundant 24 h retry / regression evidence
+derived_audit,2,"outputs_cross_benchmark_evidence, outputs_parameter_audit",Derived audit / secondary evidence
+smoke_regression,10,"publication_smoke, publication_smoke2, publication_smoke3",Smoke / regression verification

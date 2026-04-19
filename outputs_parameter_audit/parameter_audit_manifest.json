@@ -1,0 +1,111 @@
+{
+  "benchmarks": [
+    {
+      "benchmark_id": "compact_6h",
+      "hours": 6,
+      "path": "outputs_compact_full"
+    },
+    {
+      "benchmark_id": "medium_12h",
+      "hours": 12,
+      "path": "outputs_medium_full"
+    },
+    {
+      "benchmark_id": "core_24h",
+      "hours": 24,
+      "path": "outputs_24h_core_eval"
+    }
+  ],
+  "search_keys": [
+    "base_soft_low",
+    "prep_power_cap_kw",
+    "lookahead_gain",
+    "min_useful_cmd_kw"
+  ],
+  "candidate_pool": [
+    {
+      "candidate": "Candidate_01",
+      "base_soft_low": 0.32,
+      "prep_power_cap_kw": 3.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_02",
+      "base_soft_low": 0.32,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_03",
+      "base_soft_low": 0.32,
+      "prep_power_cap_kw": 5.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_04",
+      "base_soft_low": 0.32,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.02,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_05",
+      "base_soft_low": 0.32,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.5
+    },
+    {
+      "candidate": "Candidate_06",
+      "base_soft_low": 0.34,
+      "prep_power_cap_kw": 3.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_07",
+      "base_soft_low": 0.34,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.01,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_08",
+      "base_soft_low": 0.34,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.02,
+      "min_useful_cmd_kw": 0.25
+    },
+    {
+      "candidate": "Candidate_09",
+      "base_soft_low": 0.34,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.02,
+      "min_useful_cmd_kw": 0.5
+    },
+    {
+      "candidate": "Candidate_10",
+      "base_soft_low": 0.36,
+      "prep_power_cap_kw": 4.0,
+      "lookahead_gain": 0.02,
+      "min_useful_cmd_kw": 0.5
+    },
+    {
+      "candidate": "Candidate_11",
+      "base_soft_low": 0.36,
+      "prep_power_cap_kw": 5.0,
+      "lookahead_gain": 0.04,
+      "min_useful_cmd_kw": 0.5
+    },
+    {
+      "candidate": "Candidate_12",
+      "base_soft_low": 0.38,
+      "prep_power_cap_kw": 5.0,
+      "lookahead_gain": 0.04,
+      "min_useful_cmd_kw": 0.5
+    }
+  ]
+}

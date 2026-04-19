@@ -1,0 +1,48 @@
+{
+  "train_seeds": [
+    0
+  ],
+  "holdout_seeds": [
+    0
+  ],
+  "holdout_valid": false,
+  "default_proposed_params": {
+    "base_soft_low": 0.32,
+    "base_soft_high": 0.62,
+    "min_useful_cmd_kw": 0.25,
+    "prep_power_cap_kw": 4.0,
+    "lookahead_gain": 0.01,
+    "reserve_enter_margin": 0.02,
+    "reserve_exit_margin": 0.01,
+    "cap_fix_hold_ticks": 3,
+    "prep_hold_ticks": 5,
+    "near_cap_margin_kw": 0.8,
+    "hold_decay": 0.6,
+    "prep_slack_gain": 0.7,
+    "prep_slack_offset": 0.4,
+    "near_cap_forecast_buffer_kw": 1.5,
+    "near_cap_soc_boost": 0.03,
+    "near_cap_prep_slack_kw": 1.2,
+    "no_forecast": false,
+    "no_lookahead": false,
+    "no_reserve_persistence": false,
+    "no_hysteresis_dwell": false,
+    "no_dynamic_reserve": false,
+    "no_reserve_correction": false
+  },
+  "selected_candidate": {
+    "label": "Candidate_01",
+    "base_soft_low": 0.32,
+    "prep_power_cap_kw": 3.0,
+    "lookahead_gain": 0.01,
+    "min_useful_cmd_kw": 0.25,
+    "canonical_train_score_vs_gr": 0.00036505664659894496
+  },
+  "selected_candidate_stability": {
+    "mean_hold_score_vs_gr": 0.00036505664659894496,
+    "std_hold_score_vs_gr": 0.0,
+    "max_hold_score_vs_gr": 0.00036505664659894496,
+    "mean_hold_rank": 1.0,
+    "mean_hold_cap_delta_vs_gr": 0.0
+  }
+}

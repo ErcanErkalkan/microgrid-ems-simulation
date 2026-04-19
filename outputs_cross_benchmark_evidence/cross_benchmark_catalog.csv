@@ -1,0 +1,4 @@
+benchmark_id,source_dir,hours,scenario_names,seeds,profiles,controllers_available
+compact_6h,outputs_compact_full,6,mixed|cloud_edge,0|1,4,FBRL|GR|MPC_best_balanced|MPC_best_ramp|NC|Proposed|RS
+medium_12h,outputs_medium_full,12,mixed|cloud_edge|wind_gust|load_step,0|1,8,FBRL|GR|MPC_best_balanced|MPC_best_ramp|NC|Proposed|RS
+core_24h,outputs_24h_core_eval,24,mixed|cloud_edge|wind_gust|load_step,0|1,8,FBRL|GR|MPC_ref|NC|Proposed|RS

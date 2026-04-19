@@ -1,0 +1,21 @@
+metric,comparison,n_pairs,mean_paired_diff,ci95_lo,ci95_hi,p_value,effect_size,effect_name,direction,p_holm
+ramp95_kw_per_min,Proposed vs NC,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+cap_violation_pct_total,Proposed vs NC,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+throughput_kwh,Proposed vs NC,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+idod,Proposed vs NC,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+flip_per_day,Proposed vs NC,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+ramp95_kw_per_min,Proposed vs GR,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+cap_violation_pct_total,Proposed vs GR,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+throughput_kwh,Proposed vs GR,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+idod,Proposed vs GR,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+flip_per_day,Proposed vs GR,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+ramp95_kw_per_min,Proposed vs RS,2,6.870821834035517,6.870821834035517,6.870821834035517,0.5,1.0,Cliff_delta,right_better,1.0
+cap_violation_pct_total,Proposed vs RS,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+throughput_kwh,Proposed vs RS,2,-18.61360024441178,-18.61360024441178,-18.61360024441178,0.5,-1.0,Cliff_delta,left_better,1.0
+idod,Proposed vs RS,2,-0.0002640273825203316,-0.0002640273825203316,-0.0002640273825203316,0.5,-1.0,Cliff_delta,left_better,1.0
+flip_per_day,Proposed vs RS,2,-552.0,-552.0,-552.0,0.5,-1.0,Cliff_delta,left_better,1.0
+ramp95_kw_per_min,Proposed vs FBRL,2,7.342484602961488,7.342484602961488,7.342484602961488,0.5,1.0,Cliff_delta,right_better,1.0
+cap_violation_pct_total,Proposed vs FBRL,2,0.0,0.0,0.0,1.0,0.0,NoDifference,tie,1.0
+throughput_kwh,Proposed vs FBRL,2,-17.106922336831893,-17.106922336831893,-17.106922336831893,0.5,-1.0,Cliff_delta,left_better,1.0
+idod,Proposed vs FBRL,2,-0.00027234406824740425,-0.00027234406824740425,-0.00027234406824740425,0.5,-1.0,Cliff_delta,left_better,1.0
+flip_per_day,Proposed vs FBRL,2,-536.0,-536.0,-536.0,0.5,-1.0,Cliff_delta,left_better,1.0
