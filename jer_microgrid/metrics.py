@@ -26,10 +26,10 @@ def _reversals(series: np.ndarray) -> list[float]:
     return out
 
 
-def rainflow_cycles(series: np.ndarray) -> list[tuple[float, float]]:
+def rainflow_cycles_detailed(series: np.ndarray) -> list[tuple[float, float, float, float]]:
     pts = _reversals(series)
     stack: list[float] = []
-    cycles: list[tuple[float, float]] = []
+    cycles: list[tuple[float, float, float, float]] = []
     for x in pts:
         stack.append(x)
         while len(stack) >= 3:
@@ -38,16 +38,36 @@ def rainflow_cycles(series: np.ndarray) -> list[tuple[float, float]]:
             r2 = abs(s2 - s1)
             if r2 < r1:
                 break
+            lo = float(min(s0, s1))
+            hi = float(max(s0, s1))
             if len(stack) == 3:
-                cycles.append((r1, 0.5))
+                cycles.append((float(r1), 0.5, lo, hi))
                 stack.pop(-2)
             else:
-                cycles.append((r1, 1.0))
+                cycles.append((float(r1), 1.0, lo, hi))
                 last = stack[-1]
                 stack = stack[:-3] + [last]
     for i in range(len(stack) - 1):
-        cycles.append((abs(stack[i + 1] - stack[i]), 0.5))
+        lo = float(min(stack[i + 1], stack[i]))
+        hi = float(max(stack[i + 1], stack[i]))
+        cycles.append((float(abs(stack[i + 1] - stack[i])), 0.5, lo, hi))
     return cycles
+
+
+def rainflow_cycles(series: np.ndarray) -> list[tuple[float, float]]:
+    return [(depth, weight) for depth, weight, _, _ in rainflow_cycles_detailed(series)]
+
+
+def _lfp_cycle_life_from_soc(soc: float) -> float:
+    soc = float(np.clip(soc, 0.0, 1.0))
+    dod = 1.0 - soc
+    return float(28270.0 * np.exp(-2.401 * dod) + 2.214 * np.exp(5.901 * dod))
+
+
+def _lfp_interval_life_loss(low_soc: float, high_soc: float, weight: float) -> float:
+    c_low = _lfp_cycle_life_from_soc(low_soc)
+    c_high = _lfp_cycle_life_from_soc(high_soc)
+    return float(weight * abs(0.5 / c_low - 0.5 / c_high))
 
 
 def compute_metrics(sim: pd.DataFrame, site: SiteConfig) -> dict[str, Any]:
@@ -70,13 +90,18 @@ def compute_metrics(sim: pd.DataFrame, site: SiteConfig) -> dict[str, Any]:
     t_high_c = np.sum(ceq > site.c_high) * site.ts_hours
     q95_ceq = quantile_safe(ceq, 0.95)
 
-    cycles = rainflow_cycles(soc)
+    detailed_cycles = rainflow_cycles_detailed(soc)
+    cycles = [(depth, weight) for depth, weight, _, _ in detailed_cycles]
     if cycles:
         depths = np.asarray([d for d, _ in cycles], dtype=float)
         weights = np.asarray([w for _, w in cycles], dtype=float)
         efcrf = float(np.sum(weights * depths))
         idod = float(np.sum(weights * depths ** site.beta_dod))
         n_micro = float(np.sum(weights * (depths <= site.dmc)))
+        lfp_cycle_loss_pct = 100.0 * float(np.sum([
+            _lfp_interval_life_loss(low_soc, high_soc, weight)
+            for _, weight, low_soc, high_soc in detailed_cycles
+        ]))
         bins = np.array([0.0, 0.1, 0.2, 0.4, 0.6, 1.0 + 1e-9])
         hist, edges = np.histogram(depths, bins=bins, weights=weights)
         hist_payload = {f"[{edges[i]:.1f},{edges[i+1]:.1f})": float(hist[i]) for i in range(len(hist))}
@@ -84,6 +109,7 @@ def compute_metrics(sim: pd.DataFrame, site: SiteConfig) -> dict[str, Any]:
         efcrf = 0.0
         idod = 0.0
         n_micro = 0.0
+        lfp_cycle_loss_pct = 0.0
         hist_payload = {}
 
     modes = sim['mode'].astype(str).to_numpy()
@@ -100,6 +126,7 @@ def compute_metrics(sim: pd.DataFrame, site: SiteConfig) -> dict[str, Any]:
         'soc_band_residency': float(soc_band_residency),
         'throughput_kwh': float(throughput),
         'efc': float(efc),
+        'lfp_cycle_loss_pct': float(lfp_cycle_loss_pct),
         't_high_soc_h': float(t_high),
         't_low_soc_h': float(t_low),
         'ceq_q95': float(q95_ceq),

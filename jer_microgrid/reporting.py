@@ -39,9 +39,10 @@ def build_main_comparison_table(metrics_df: pd.DataFrame) -> pd.DataFrame:
             'CapViolPct': mean_std_str(g['cap_violation_pct_total']),
             'Throughput': mean_std_str(g['throughput_kwh']),
             'EFC': mean_std_str(g['efc']),
+            'LFP_CycleLossPct': mean_std_str(g['lfp_cycle_loss_pct'], ndigits=4),
             'HighSOCDwell': mean_std_str(g['t_high_soc_h']),
             'HighCExposure': mean_std_str(g['t_high_c_h']),
-            'IDOD': mean_std_str(g['idod']),
+            'IDOD': mean_std_str(g['idod'], ndigits=4),
         })
     return pd.DataFrame(rows)
 
@@ -54,10 +55,11 @@ def build_stress_proxy_table(metrics_df: pd.DataFrame) -> pd.DataFrame:
             'Controller': controller,
             'Throughput': mean_std_str(g['throughput_kwh']),
             'EFC': mean_std_str(g['efc']),
+            'LFP_CycleLossPct': mean_std_str(g['lfp_cycle_loss_pct'], ndigits=4),
             'T_high_SOC': mean_std_str(g['t_high_soc_h']),
             'Q95_Ceq': mean_std_str(g['ceq_q95']),
             'T_high_C': mean_std_str(g['t_high_c_h']),
-            'IDOD': mean_std_str(g['idod']),
+            'IDOD': mean_std_str(g['idod'], ndigits=4),
         })
     return pd.DataFrame(rows)
 
@@ -70,8 +72,9 @@ def build_ablation_table(metrics_df: pd.DataFrame) -> pd.DataFrame:
             'Variant': controller,
             'Ramp95': mean_std_str(g['ramp95_kw_per_min']),
             'Throughput': mean_std_str(g['throughput_kwh']),
+            'LFP_CycleLossPct': mean_std_str(g['lfp_cycle_loss_pct'], ndigits=4),
             'T_high_SOC': mean_std_str(g['t_high_soc_h']),
-            'IDOD': mean_std_str(g['idod']),
+            'IDOD': mean_std_str(g['idod'], ndigits=4),
             'MicroCycles': mean_std_str(g['n_micro']),
             'FlipDay': mean_std_str(g['flip_per_day']),
         })
@@ -81,7 +84,7 @@ def build_ablation_table(metrics_df: pd.DataFrame) -> pd.DataFrame:
 def build_claims_summary_table(metrics_df: pd.DataFrame, reference: str, baselines: Sequence[str],
                                unit_cols: Sequence[str] = ('scenario_seed', 'day_id')) -> pd.DataFrame:
     key_metrics = [
-        'ramp95_kw_per_min', 'cap_violation_pct_total', 'throughput_kwh', 'idod', 'flip_per_day'
+        'ramp95_kw_per_min', 'cap_violation_pct_total', 'throughput_kwh', 'lfp_cycle_loss_pct', 'idod', 'flip_per_day'
     ]
     ref_df = metrics_df[metrics_df['controller'] == reference].copy()
     rows = []

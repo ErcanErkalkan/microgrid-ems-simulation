@@ -207,6 +207,7 @@ def _build_candidate_stability(candidate_split_scores_df: pd.DataFrame) -> pd.Da
             'mean_hold_ramp_delta_vs_gr': float(g['ramp95_kw_per_min_delta_vs_gr'].mean()),
             'mean_hold_cap_delta_vs_gr': float(g['cap_violation_pct_total_delta_vs_gr'].mean()),
             'mean_hold_throughput_delta_vs_gr': float(g['throughput_kwh_delta_vs_gr'].mean()),
+            'mean_hold_lfp_cycle_loss_delta_vs_gr': float(g['lfp_cycle_loss_pct_delta_vs_gr'].mean()),
             'mean_hold_idod_delta_vs_gr': float(g['idod_delta_vs_gr'].mean()),
             'mean_hold_flip_delta_vs_gr': float(g['flip_per_day_delta_vs_gr'].mean()),
         })
@@ -229,6 +230,7 @@ def _build_param_group_summary(stability_df: pd.DataFrame) -> pd.DataFrame:
                 'mean_hold_rank': float(g['mean_hold_rank'].mean()),
                 'mean_hold_cap_delta_vs_gr': float(g['mean_hold_cap_delta_vs_gr'].mean()),
                 'mean_hold_throughput_delta_vs_gr': float(g['mean_hold_throughput_delta_vs_gr'].mean()),
+                'mean_hold_lfp_cycle_loss_delta_vs_gr': float(g['mean_hold_lfp_cycle_loss_delta_vs_gr'].mean()),
                 'mean_hold_idod_delta_vs_gr': float(g['mean_hold_idod_delta_vs_gr'].mean()),
             })
     return pd.DataFrame(rows).sort_values(['parameter', 'value']).reset_index(drop=True)

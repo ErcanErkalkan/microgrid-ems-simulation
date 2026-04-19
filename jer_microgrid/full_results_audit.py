@@ -148,14 +148,19 @@ def _summarize_result_dir(path: Path) -> dict[str, Any]:
         'proposed_ramp95': proposed.get('ramp95_kw_per_min'),
         'proposed_cap_violation_pct': proposed.get('cap_violation_pct_total'),
         'proposed_throughput_kwh': proposed.get('throughput_kwh'),
+        'proposed_lfp_cycle_loss_pct': proposed.get('lfp_cycle_loss_pct'),
         'gr_ramp95': gr.get('ramp95_kw_per_min'),
         'gr_cap_violation_pct': gr.get('cap_violation_pct_total'),
         'gr_throughput_kwh': gr.get('throughput_kwh'),
+        'gr_lfp_cycle_loss_pct': gr.get('lfp_cycle_loss_pct'),
         'rs_throughput_kwh': rs.get('throughput_kwh'),
+        'rs_lfp_cycle_loss_pct': rs.get('lfp_cycle_loss_pct'),
         'fbrl_throughput_kwh': fbrl.get('throughput_kwh'),
+        'fbrl_lfp_cycle_loss_pct': fbrl.get('lfp_cycle_loss_pct'),
         'nc_cap_violation_pct': nc.get('cap_violation_pct_total'),
         'mpc_ramp95': mpc.get('ramp95_kw_per_min'),
         'mpc_cap_violation_pct': mpc.get('cap_violation_pct_total'),
+        'mpc_lfp_cycle_loss_pct': mpc.get('lfp_cycle_loss_pct'),
         'proposed_mean_cpu_ms': proposed_cpu,
         'mpc_mean_cpu_ms': mpc_cpu,
     }
@@ -165,7 +170,8 @@ def _add_signature_groups(catalog_df: pd.DataFrame) -> pd.DataFrame:
     sig_cols = [
         'hours', 'scenario_count', 'seed_count', 'profiles',
         'proposed_ramp95', 'proposed_cap_violation_pct', 'proposed_throughput_kwh',
-        'gr_throughput_kwh', 'rs_throughput_kwh', 'fbrl_throughput_kwh',
+        'proposed_lfp_cycle_loss_pct', 'gr_throughput_kwh', 'gr_lfp_cycle_loss_pct',
+        'rs_throughput_kwh', 'rs_lfp_cycle_loss_pct', 'fbrl_throughput_kwh', 'fbrl_lfp_cycle_loss_pct',
     ]
     signature = (
         catalog_df[sig_cols]
@@ -198,6 +204,7 @@ def _build_primary_controller_summary(repo_root: Path) -> pd.DataFrame:
                 'ramp95_kw_per_min': float(g['ramp95_kw_per_min'].mean()),
                 'cap_violation_pct_total': float(g['cap_violation_pct_total'].mean()),
                 'throughput_kwh': float(g['throughput_kwh'].mean()),
+                'lfp_cycle_loss_pct': float(g['lfp_cycle_loss_pct'].mean()),
             })
     return pd.DataFrame(rows).sort_values(['hours', 'controller']).reset_index(drop=True)
 
@@ -207,14 +214,20 @@ def _build_primary_evidence_summary(catalog_df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         return df
     df['throughput_vs_gr_delta_kwh'] = df['proposed_throughput_kwh'] - df['gr_throughput_kwh']
+    df['lfp_cycle_loss_vs_gr_delta_pctpt'] = df['proposed_lfp_cycle_loss_pct'] - df['gr_lfp_cycle_loss_pct']
     df['throughput_reduction_vs_rs_pct'] = 100.0 * (1.0 - df['proposed_throughput_kwh'] / df['rs_throughput_kwh'])
     df['throughput_reduction_vs_fbrl_pct'] = 100.0 * (1.0 - df['proposed_throughput_kwh'] / df['fbrl_throughput_kwh'])
+    df['lfp_cycle_loss_reduction_vs_rs_pct'] = 100.0 * (1.0 - df['proposed_lfp_cycle_loss_pct'] / df['rs_lfp_cycle_loss_pct'])
+    df['lfp_cycle_loss_reduction_vs_fbrl_pct'] = 100.0 * (1.0 - df['proposed_lfp_cycle_loss_pct'] / df['fbrl_lfp_cycle_loss_pct'])
     df['cap_gain_vs_nc_pctpt'] = df['nc_cap_violation_pct'] - df['proposed_cap_violation_pct']
     df['cpu_speedup_vs_mpc'] = df['mpc_mean_cpu_ms'] / df['proposed_mean_cpu_ms']
     keep = [
         'result_dir', 'hours', 'profiles', 'proposed_ramp95', 'proposed_cap_violation_pct',
-        'proposed_throughput_kwh', 'gr_throughput_kwh', 'throughput_vs_gr_delta_kwh',
+        'proposed_throughput_kwh', 'proposed_lfp_cycle_loss_pct',
+        'gr_throughput_kwh', 'gr_lfp_cycle_loss_pct', 'throughput_vs_gr_delta_kwh',
+        'lfp_cycle_loss_vs_gr_delta_pctpt',
         'throughput_reduction_vs_rs_pct', 'throughput_reduction_vs_fbrl_pct',
+        'lfp_cycle_loss_reduction_vs_rs_pct', 'lfp_cycle_loss_reduction_vs_fbrl_pct',
         'cap_gain_vs_nc_pctpt', 'cpu_speedup_vs_mpc',
     ]
     return df[keep].sort_values('hours').reset_index(drop=True)
@@ -296,6 +309,35 @@ def _plot_runtime_speedup(primary_df: pd.DataFrame, output_path: Path) -> None:
     ax.bar(labels, primary_df['cpu_speedup_vs_mpc'], color=['#6c8ebf', '#93c47d', '#e69138'])
     ax.set_ylabel('MPC / Proposed speedup')
     ax.set_title('Runtime gap preserved across independent benchmarks')
+    fig.tight_layout()
+    fig.savefig(output_path)
+    plt.close(fig)
+
+
+def _plot_cycle_life_loss(controller_df: pd.DataFrame, output_path: Path) -> None:
+    if controller_df.empty:
+        return
+    keep = controller_df[controller_df['controller'].isin(['Proposed', 'GR', 'RS', 'FBRL', 'MPC_ref', 'MPC_best_balanced'])].copy()
+    if keep.empty:
+        return
+    ensure_dir(output_path.parent)
+    color_map = {
+        'Proposed': '#0a5c36',
+        'GR': '#4f6d7a',
+        'RS': '#c97b00',
+        'FBRL': '#7a3ea1',
+        'MPC_ref': '#005f99',
+        'MPC_best_balanced': '#005f99',
+    }
+    fig, ax = plt.subplots(figsize=(7.8, 5.0))
+    for controller, g in keep.groupby('controller', sort=False):
+        g = g.sort_values('hours')
+        color = color_map.get(controller, '#333333')
+        ax.plot(g['hours'], g['lfp_cycle_loss_pct'], marker='o', linewidth=1.8, color=color, label=controller)
+    ax.set_xlabel('Benchmark horizon (h)')
+    ax.set_ylabel('Modeled LFP cycle-life loss (%)')
+    ax.set_title('Chemistry-calibrated cycling life loss across independent tiers')
+    ax.legend(fontsize=8, ncol=2)
     fig.tight_layout()
     fig.savefig(output_path)
     plt.close(fig)
@@ -440,6 +482,7 @@ def run_full_results_audit(output_dir: str | Path = 'outputs_full_results_audit'
 
     _plot_cross_benchmark_tradeoff(controller_summary_df, figdir / 'cross_benchmark_tradeoff.pdf')
     _plot_runtime_speedup(primary_summary_df, figdir / 'runtime_speedup.pdf')
+    _plot_cycle_life_loss(controller_summary_df, figdir / 'cross_benchmark_cycle_loss.pdf')
     _plot_claim_heatmap(repo_root, figdir / 'scenario_nonworse_heatmap.pdf')
     _plot_parameter_plateau(repo_root, figdir / 'parameter_plateau.pdf')
 

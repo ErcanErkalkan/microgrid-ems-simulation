@@ -78,6 +78,7 @@ def _summarize_weight_metrics(metrics_df: pd.DataFrame, group_cols: tuple[str, .
             'ramp95_kw_per_min': g['ramp95_kw_per_min'].mean(),
             'throughput_kwh': g['throughput_kwh'].mean(),
             'efc': g['efc'].mean(),
+            'lfp_cycle_loss_pct': g['lfp_cycle_loss_pct'].mean(),
             't_high_soc_h': g['t_high_soc_h'].mean(),
             'ceq_q95': g['ceq_q95'].mean(),
             't_high_c_h': g['t_high_c_h'].mean(),
@@ -237,6 +238,7 @@ def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConf
             'tmin': tmin,
             'ramp95_kw_per_min': met['ramp95_kw_per_min'].mean(),
             'throughput_kwh': met['throughput_kwh'].mean(),
+            'lfp_cycle_loss_pct': met['lfp_cycle_loss_pct'].mean(),
             'idod': met['idod'].mean(),
         })
     sensitivity_df = pd.DataFrame(sens_rows)
@@ -327,7 +329,7 @@ def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConf
     save_stress_boxplots(
         metrics_df[metrics_df['controller'].isin(['Proposed', 'FBRL', 'MPC_best_balanced'])],
         figs_dir / 'stress_proxy_boxplots.pdf',
-        ['throughput_kwh', 't_high_soc_h', 't_high_c_h', 'idod'],
+        ['throughput_kwh', 'lfp_cycle_loss_pct', 't_high_soc_h', 't_high_c_h', 'idod'],
         ['Proposed', 'FBRL', 'MPC_best_balanced'],
     )
     save_pareto_frontier(mpc_frontier, figs_dir / 'mpc_pareto_frontier.pdf')

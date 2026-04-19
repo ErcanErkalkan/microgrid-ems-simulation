@@ -98,17 +98,17 @@ class ExperimentConfig:
 
 
 PRIMARY_STRESS_METRICS: List[str] = [
-    'throughput_kwh', 'efc', 't_high_soc_h', 'ceq_q95', 't_high_c_h', 'idod'
+    'throughput_kwh', 'efc', 'lfp_cycle_loss_pct', 't_high_soc_h', 'ceq_q95', 't_high_c_h', 'idod'
 ]
 
 MAIN_METRICS: List[str] = [
     'ramp95_kw_per_min', 'cap_violation_pct_total', 'throughput_kwh', 'efc',
-    't_high_soc_h', 'ceq_q95', 't_high_c_h', 'idod', 'n_micro', 'flip_per_day',
+    'lfp_cycle_loss_pct', 't_high_soc_h', 'ceq_q95', 't_high_c_h', 'idod', 'n_micro', 'flip_per_day',
     'soc_band_residency'
 ]
 
 CONTROLLERS_MAIN: List[str] = [
-    'Proposed', 'NC', 'GR', 'RS', 'FBRL', 'MPC_best_ramp', 'MPC_best_balanced'
+    'Proposed', 'NC', 'GR', 'RS', 'FBRL', 'MPC_ref', 'MPC_best_ramp', 'MPC_best_balanced'
 ]
 
 ABLATION_MAP = {

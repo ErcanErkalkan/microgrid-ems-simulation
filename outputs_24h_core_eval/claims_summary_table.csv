@@ -1,6 +1,6 @@
-Reference,Baseline,Pairs,ramp95_kw_per_min_delta_mean,ramp95_kw_per_min_wins,ramp95_kw_per_min_ties,ramp95_kw_per_min_losses,cap_violation_pct_total_delta_mean,cap_violation_pct_total_wins,cap_violation_pct_total_ties,cap_violation_pct_total_losses,throughput_kwh_delta_mean,throughput_kwh_wins,throughput_kwh_ties,throughput_kwh_losses,idod_delta_mean,idod_wins,idod_ties,idod_losses,flip_per_day_delta_mean,flip_per_day_wins,flip_per_day_ties,flip_per_day_losses,all4_nonworse_count
-Proposed,NC,8,-0.17295918988717585,7,1,0,-3.767361111111111,8,0,0,4.731062186988869,0,0,8,0.0016466315858003776,0,0,8,41.0,0,0,8,0
-Proposed,GR,8,0.005602585416090378,1,5,2,0.0,0,8,0,0.4097827850202845,0,0,8,-3.1034343969394635e-05,1,0,7,1.75,1,5,2,0
-Proposed,RS,8,6.213689647693288,0,0,8,-3.0208333333333335,6,2,0,-72.05492105655162,8,0,0,-0.0007247170873634676,6,0,2,-499.5,8,0,0,0
-Proposed,FBRL,8,6.782909618346101,0,0,8,0.0,0,8,0,-69.42641905265175,8,0,0,-0.0038809771634637277,8,0,0,-477.875,8,0,0,0
-Proposed,MPC_ref,8,-0.027325490673641095,6,0,2,-2.3784722222222223,8,0,0,0.23038312305410913,2,0,6,-0.0016797853474315692,6,0,2,-33.0,6,0,2,1
+Reference,Baseline,Pairs,ramp95_kw_per_min_delta_mean,ramp95_kw_per_min_wins,ramp95_kw_per_min_ties,ramp95_kw_per_min_losses,cap_violation_pct_total_delta_mean,cap_violation_pct_total_wins,cap_violation_pct_total_ties,cap_violation_pct_total_losses,throughput_kwh_delta_mean,throughput_kwh_wins,throughput_kwh_ties,throughput_kwh_losses,lfp_cycle_loss_pct_delta_mean,lfp_cycle_loss_pct_wins,lfp_cycle_loss_pct_ties,lfp_cycle_loss_pct_losses,idod_delta_mean,idod_wins,idod_ties,idod_losses,flip_per_day_delta_mean,flip_per_day_wins,flip_per_day_ties,flip_per_day_losses,all4_nonworse_count
+Proposed,NC,8,-0.1729591898871754,7,1,0,-3.767361111111111,8,0,0,4.731062186988869,0,0,8,0.0004953038001694336,0,0,8,0.0016466315858003782,0,0,8,41.0,0,0,8,0
+Proposed,GR,8,0.005602585416090378,1,5,2,0.0,0,8,0,0.4097827850202845,0,0,8,1.326354293324904e-05,1,0,7,-3.103434396939505e-05,1,0,7,1.75,1,5,2,0
+Proposed,RS,8,6.213689647693287,0,0,8,-3.0208333333333335,6,2,0,-72.05492105655162,8,0,0,-0.00483015666857979,8,0,0,-0.0007247170873634698,6,0,2,-499.5,8,0,0,0
+Proposed,FBRL,8,6.7829096183461015,0,0,8,0.0,0,8,0,-69.42641905265177,8,0,0,-0.004733796658116112,8,0,0,-0.0038809771634637264,8,0,0,-477.875,8,0,0,0
+Proposed,MPC_ref,8,-0.027325490673641317,6,0,2,-2.3784722222222223,8,0,0,0.23038312305410935,2,0,6,0.00011466017426915099,2,0,6,-0.00167978534743157,6,0,2,-33.0,6,0,2,1

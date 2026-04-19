@@ -41,7 +41,14 @@ PUBLICATION_CANDIDATES: list[dict[str, float]] = [
 ]
 
 PUBLICATION_BASELINES = ['NC', 'GR', 'RS', 'FBRL']
-PUBLICATION_METRICS = ['ramp95_kw_per_min', 'cap_violation_pct_total', 'throughput_kwh', 'idod', 'flip_per_day']
+PUBLICATION_METRICS = [
+    'ramp95_kw_per_min',
+    'cap_violation_pct_total',
+    'throughput_kwh',
+    'lfp_cycle_loss_pct',
+    'idod',
+    'flip_per_day',
+]
 
 
 def _split_seeds_for_publication(seeds: list[int]) -> tuple[list[int], list[int]]:
@@ -178,6 +185,7 @@ def _build_candidate_stability(candidate_split_scores_df: pd.DataFrame) -> pd.Da
             'mean_hold_ramp_delta_vs_gr': float(g['ramp95_kw_per_min_delta_vs_gr'].mean()),
             'mean_hold_cap_delta_vs_gr': float(g['cap_violation_pct_total_delta_vs_gr'].mean()),
             'mean_hold_throughput_delta_vs_gr': float(g['throughput_kwh_delta_vs_gr'].mean()),
+            'mean_hold_lfp_cycle_loss_delta_vs_gr': float(g['lfp_cycle_loss_pct_delta_vs_gr'].mean()),
             'mean_hold_idod_delta_vs_gr': float(g['idod_delta_vs_gr'].mean()),
             'mean_hold_flip_delta_vs_gr': float(g['flip_per_day_delta_vs_gr'].mean()),
         })
@@ -291,12 +299,9 @@ def run_publication_package(site: SiteConfig, synth: SyntheticConfig, exp: Exper
         split_train_df = _candidate_scores_for_subset(candidate_metrics_df, gr_metrics_df, candidate_pool, split_train)
         split_holdout_df = _candidate_scores_for_subset(candidate_metrics_df, gr_metrics_df, candidate_pool, split_holdout)
         split_holdout_df['hold_rank'] = split_holdout_df['score_vs_gr'].rank(method='min', ascending=True).astype(int)
+        metric_delta_cols = [f'{metric}_delta_vs_gr' for metric in PUBLICATION_METRICS]
         merged = split_train_df[['candidate', 'score_vs_gr']].rename(columns={'score_vs_gr': 'train_score_vs_gr'}).merge(
-            split_holdout_df[[
-                'candidate', 'score_vs_gr', 'hold_rank',
-                'ramp95_kw_per_min_delta_vs_gr', 'cap_violation_pct_total_delta_vs_gr',
-                'throughput_kwh_delta_vs_gr', 'idod_delta_vs_gr', 'flip_per_day_delta_vs_gr',
-            ]],
+            split_holdout_df[['candidate', 'score_vs_gr', 'hold_rank'] + metric_delta_cols],
             on='candidate',
             how='inner',
         )
