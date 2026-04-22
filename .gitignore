@@ -4,7 +4,11 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Exclude the manuscript package from the public code repository.
-A_PLC_SCADA_compatible_rule_based_operating_scheme_for_microgrids_to_reduce_battery_stress/
+ESWA/
+SUSCOM.zip
+data_cache/
+outputs_evidence_upgrade/extended_synthetic/
+outputs_evidence_upgrade/external_trace/
 
 # Exclude manuscript build artifacts left at repo root.
 elsarticle-template-num.aux

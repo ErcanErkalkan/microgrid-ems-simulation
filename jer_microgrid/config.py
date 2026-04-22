@@ -93,7 +93,7 @@ class ExperimentConfig:
     use_parallel: bool = True
     max_workers: int | None = None
     output_dir: str = 'outputs'
-    representative_scenario: str = 'mixed'
+    representative_scenario: str = 'load_step'
     representative_seed: int = 0
 
 

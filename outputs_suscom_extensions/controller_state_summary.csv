@@ -1,0 +1,7 @@
+component,type,count,notes
+Base history ring buffer,rolling buffer,6,Samples needed to reproduce moving-average and trend terms
+Forecast scratch buffer,ephemeral array,10,Short-horizon base forecast values
+Previous command,persistent scalar,1,Used for step clipping and action hold
+Previous mode label,persistent enum,1,PS / VF / PREP_CH / PREP_DIS / IDLE
+Reserve label,persistent enum,1,LOW / MID / HIGH
+Dwell counter,persistent integer,1,Supports bounded short action-hold logic

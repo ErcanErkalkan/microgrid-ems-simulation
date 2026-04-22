@@ -49,6 +49,12 @@ Full run with publication audit:
 python main.py --output-dir outputs_full --publication-package
 ```
 
+SUSCOM-oriented extension experiments:
+
+```powershell
+python -m jer_microgrid.suscom_extensions --output-dir outputs_suscom_extensions
+```
+
 ## Key Repository Contents
 
 - `jer_microgrid/`: controllers, simulation, metrics, plotting, audits
@@ -58,6 +64,7 @@ python main.py --output-dir outputs_full --publication-package
 - `outputs_cross_benchmark_evidence/`: cross-benchmark summaries
 - `outputs_parameter_audit/`: parameter search and sensitivity evidence
 - `outputs_full_results_audit/`: full directory-level audit of all result folders
+- `outputs_suscom_extensions/`: scan-time, robustness, and ultra-light extension evidence
 
 ## Notes
 

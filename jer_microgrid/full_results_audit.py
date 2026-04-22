@@ -26,6 +26,15 @@ PRIMARY_RUNS = ('outputs_compact_full', 'outputs_medium_full', 'outputs_24h_core
 DERIVED_RUNS = ('outputs_cross_benchmark_evidence', 'outputs_parameter_audit')
 
 
+def _manifest_nested(manifest: dict[str, Any], *keys: str, default: Any = None) -> Any:
+    value: Any = manifest
+    for key in keys:
+        if not isinstance(value, dict) or key not in value:
+            return default
+        value = value[key]
+    return value
+
+
 def _iter_result_dirs(repo_root: Path, *, excluded_names: set[str] | None = None) -> list[Path]:
     excluded_names = excluded_names or set()
     dirs = []
@@ -69,6 +78,8 @@ def _metric_means_by_controller(path: Path) -> dict[str, dict[str, float]]:
 def _classify_result_dir(name: str) -> tuple[str, str]:
     if name in PRIMARY_RUNS:
         return 'primary_postfix', 'Independent benchmark evidence'
+    if name == 'outputs_suscom_extensions':
+        return 'suscom_extension', 'Supplementary SUSCOM extension experiments'
     if name == 'outputs_24h_eval':
         return 'incomplete', 'Discarded incomplete early run'
     if name == 'outputs_24h_eval_retry':
@@ -96,11 +107,11 @@ def _summarize_result_dir(path: Path) -> dict[str, Any]:
     if publication_sel.exists():
         publication_data = json.loads(publication_sel.read_text(encoding='utf-8'))
 
-    synth = manifest.get('synthetic', {})
-    exp = manifest.get('experiment', {})
-    hours = synth.get('hours', manifest.get('hours'))
-    scenarios = synth.get('scenario_names', manifest.get('scenario_names', []))
-    seeds = exp.get('seeds', manifest.get('seeds', []))
+    synth = manifest.get('synthetic', {}) if isinstance(manifest.get('synthetic', {}), dict) else {}
+    exp = manifest.get('experiment', {}) if isinstance(manifest.get('experiment', {}), dict) else {}
+    hours = _manifest_nested(manifest, 'synthetic', 'hours', default=manifest.get('hours'))
+    scenarios = _manifest_nested(manifest, 'synthetic', 'scenario_names', default=manifest.get('scenario_names', []))
+    seeds = _manifest_nested(manifest, 'experiment', 'seeds', default=manifest.get('seeds', []))
     proposed_units = 0
     metrics_df = _maybe_read_csv(path / 'main_metrics_by_scenario_day.csv')
     if not metrics_df.empty and 'controller' in metrics_df.columns:
@@ -190,7 +201,8 @@ def _build_primary_controller_summary(repo_root: Path) -> pd.DataFrame:
     for run_name in PRIMARY_RUNS:
         run_dir = repo_root / run_name
         manifest = _load_manifest(run_dir)
-        hours = int(manifest.get('synthetic', {}).get('hours', 0))
+        hours_raw = _manifest_nested(manifest, 'synthetic', 'hours', default=manifest.get('hours', 0))
+        hours = int(hours_raw or 0)
         metrics_df = _maybe_read_csv(run_dir / 'main_metrics_by_scenario_day.csv')
         if metrics_df.empty:
             continue

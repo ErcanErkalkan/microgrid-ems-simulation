@@ -13,7 +13,15 @@ from .config import ABLATION_MAP, CONTROLLERS_MAIN, ExperimentConfig, OptimConfi
 from .controllers import build_controller, get_proposed_controller_params
 from .metrics import compute_group_metrics
 from .optimization_refs import LinearMPCQPController, WeightTuple, enumerate_weight_grid, solve_global_oracle
-from .plotting import save_pareto_frontier, save_rainflow_hist, save_ramp_cdf, save_representative_timeseries, save_sensitivity_heatmap, save_stress_boxplots
+from .plotting import (
+    save_metric_boxplot,
+    save_pareto_frontier,
+    save_rainflow_hist,
+    save_ramp_cdf,
+    save_representative_timeseries,
+    save_sensitivity_heatmap,
+    save_stress_boxplots,
+)
 from .reporting import (
     build_ablation_table,
     build_claims_by_scenario_table,
@@ -307,13 +315,10 @@ def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConf
 
     # Representative plotting dataset.
     rep_tick = []
+    rep_plot_controllers = ['Proposed', 'GR', 'RS', 'FBRL']
     rep_profile = generate_profile(exp.representative_seed, exp.representative_scenario, site, synth)
-    for ctrl_name in ['Proposed', 'NC', 'FBRL', 'MPC_best_balanced']:
-        if ctrl_name == 'MPC_best_balanced':
-            weights = WeightTuple(*[float(x) for x in best_balanced_label.split('|')])
-            ctrl = LinearMPCQPController(site, optim, weights, perfect_preview=False)
-        else:
-            ctrl = build_controller('Proposed' if ctrl_name == 'Proposed' else ctrl_name, site)
+    for ctrl_name in rep_plot_controllers:
+        ctrl = build_controller('Proposed' if ctrl_name == 'Proposed' else ctrl_name, site)
         sim = simulate_controller(rep_profile, ctrl, site)
         tick = attach_profile_columns(sim.series, rep_profile)
         tick['controller'] = ctrl_name
@@ -322,8 +327,25 @@ def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConf
     rep_tick_df.to_csv(outdir / 'representative_timeseries.csv', index=False)
 
     # Figures.
-    save_ramp_cdf(rep_tick_df, figs_dir / 'ramp_cdf_ccdf.pdf', ['NC', 'FBRL', 'Proposed', 'MPC_best_balanced'])
-    save_representative_timeseries(rep_tick_df, figs_dir / 'representative_timeseries.pdf', ['NC', 'FBRL', 'Proposed', 'MPC_best_balanced'])
+    save_ramp_cdf(
+        tick_df[tick_df['controller'].isin(rep_plot_controllers)],
+        figs_dir / 'ramp_cdf_ccdf.pdf',
+        ['GR', 'Proposed', 'RS', 'FBRL'],
+    )
+    save_representative_timeseries(
+        rep_tick_df,
+        figs_dir / 'representative_timeseries.pdf',
+        ['GR', 'Proposed', 'RS', 'FBRL'],
+        n_points=240,
+    )
+    save_metric_boxplot(
+        metrics_df[metrics_df['controller'].isin(['Proposed', 'GR', 'FBRL'])],
+        figs_dir / 'modeled_cycle_loss_boxplot.pdf',
+        'lfp_cycle_loss_pct',
+        ['Proposed', 'GR', 'FBRL'],
+        ylabel='Modeled LFP cycle-life loss (%)',
+        title='Primary 24-hour benchmark: chemistry-calibrated cycling indicator',
+    )
     if not hist_df.empty:
         save_rainflow_hist(hist_df, figs_dir / 'rainflow_hist.pdf', ['Proposed', 'FBRL', 'RS', 'MPC_best_balanced'])
     save_stress_boxplots(
@@ -400,7 +422,7 @@ def build_default_configs(smoke: bool = False):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Run all experiments for the JER microgrid manuscript.')
+    parser = argparse.ArgumentParser(description='Run the core benchmark pipeline for the microgrid supervisory-computing study.')
     parser.add_argument('--smoke', action='store_true', help='Run a reduced verification sweep.')
     parser.add_argument('--output-dir', type=str, default=None)
     parser.add_argument('--publication-package', action='store_true', help='Also build publication-audit artifacts after the run.')
