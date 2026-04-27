@@ -35,25 +35,39 @@ def simulate_controller(profile: pd.DataFrame, controller: ControllerBase, site:
     peak = profile['peak_flag'].to_numpy(dtype=int)
     ts = profile['timestamp'].to_numpy()
     n = len(profile)
+    is_disconnected = profile['is_disconnected'].to_numpy(dtype=bool) if 'is_disconnected' in profile else np.zeros(n, dtype=bool)
     soc = site.soc_init
     rows = []
     total_cpu = 0.0
+    
+    is_cloud_dependent = getattr(controller, 'is_cloud_dependent', False)
+    if isinstance(controller, LinearMPCQPController):
+        is_cloud_dependent = True
+
+    prev_valid_cmd = 0.0
 
     for t in range(n):
         history = base[: t + 1]
-        t0 = time.perf_counter()
-        if isinstance(controller, LinearMPCQPController):
-            cmd, debug = controller.step(
-                t,
-                history,
-                soc,
-                int(peak[t]),
-                future_base=base[t: t + site.horizon_k] if future_preview else None,
-                future_peak_flags=peak[t: t + site.horizon_k] if future_preview else None,
-            )
+        if is_cloud_dependent and is_disconnected[t]:
+            cmd = prev_valid_cmd
+            debug = {'mode': 'OFFLINE', 'rg_state': 'MID'}
+            cpu = 0.0
         else:
-            cmd, debug = controller.step(t, history, soc, int(peak[t]))
-        cpu = time.perf_counter() - t0
+            t0 = time.perf_counter()
+            if isinstance(controller, LinearMPCQPController):
+                cmd, debug = controller.step(
+                    t,
+                    history,
+                    soc,
+                    int(peak[t]),
+                    future_base=base[t: t + site.horizon_k] if future_preview else None,
+                    future_peak_flags=peak[t: t + site.horizon_k] if future_preview else None,
+                )
+            else:
+                cmd, debug = controller.step(t, history, soc, int(peak[t]))
+            cpu = time.perf_counter() - t0
+            prev_valid_cmd = cmd
+            
         total_cpu += cpu
         grid = base[t] - cmd
         soc_next = soc_update(soc, cmd, site)

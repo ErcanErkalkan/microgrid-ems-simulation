@@ -1,0 +1,239 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{lasseter2002microgrids}
+R.~H. Lasseter, Microgrids, IEEE Power Engineering Society Winter Meeting 1
+  (2002) 305--308.
+\newblock \href {https://doi.org/10.1109/PESW.2002.985003}
+  {\path{doi:10.1109/PESW.2002.985003}}.
+
+\bibitem{parhizi2015state}
+S.~Parhizi, H.~Lotfi, A.~Khodaei, S.~Bahramirad, State of the art in research
+  on microgrids: A review, IEEE Access 3 (2015) 890--925.
+\newblock \href {https://doi.org/10.1109/ACCESS.2015.2443119}
+  {\path{doi:10.1109/ACCESS.2015.2443119}}.
+
+\bibitem{hu2021}
+J.~Hu, J.~B. Rawlings, B.~Huang, Model predictive control of microgrids---an
+  overview, Renewable and Sustainable Energy Reviews 136 (2021) 110422.
+
+\bibitem{rawlings2009model}
+J.~B. Rawlings, D.~Q. Mayne, Model predictive control: Theory and design, Nob
+  Hill PublishingISBN: 978-0-9759377-0-9 (2009).
+
+\bibitem{ding2019cyber}
+D.~Ding, Q.-L. Han, Z.~Wang, X.~Ge, A survey on model-based distributed control
+  and filtering for industrial cyber-physical systems, IEEE Transactions on
+  Industrial Informatics 15~(5) (2019) 2483--2499.
+\newblock \href {https://doi.org/10.1109/TII.2019.2905295}
+  {\path{doi:10.1109/TII.2019.2905295}}.
+
+\bibitem{setiawan2021iot}
+M.~A. Setiawan, N.~Abe, K.~Uchida, Performance degradation analysis of
+  iot-assisted smart grid communication under intermittent connectivity,
+  Energies 14~(3) (2021) 766.
+\newblock \href {https://doi.org/10.3390/en14030766}
+  {\path{doi:10.3390/en14030766}}.
+
+\bibitem{shi2011survey}
+W.~Shi, J.~Cao, Q.~Zhang, Y.~Li, L.~Xu, Edge computing: Vision and challenges,
+  IEEE Internet of Things Journal 3~(5) (2016) 637--646.
+\newblock \href {https://doi.org/10.1109/JIOT.2016.2579198}
+  {\path{doi:10.1109/JIOT.2016.2579198}}.
+
+\bibitem{mao2017survey}
+Y.~Mao, C.~You, J.~Zhang, K.~Huang, K.~B. Letaief, A survey on mobile edge
+  computing: The communication perspective, IEEE Communications Surveys \&
+  Tutorials 19~(4) (2017) 2322--2358.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2745201}
+  {\path{doi:10.1109/COMST.2017.2745201}}.
+
+\bibitem{ton2012us}
+D.~T. Ton, M.~A. Smith, The {U.S.} {D}epartment of {E}nergy's microgrid
+  initiative, The Electricity Journal 25~(8) (2012) 84--94.
+\newblock \href {https://doi.org/10.1016/j.tej.2012.09.013}
+  {\path{doi:10.1016/j.tej.2012.09.013}}.
+
+\bibitem{taufer2023edge}
+M.~Taufer, et~al., A comprehensive survey on edge computing and distributed
+  resilience for the internet of things, Future Generation Computer Systems 145
+  (2023) 100--115.
+\newblock \href {https://doi.org/10.1016/j.future.2023.01.001}
+  {\path{doi:10.1016/j.future.2023.01.001}}.
+
+\bibitem{taufer2021cloud}
+M.~Taufer, et~al., Bridging the gap between cloud hpc and iot edge devices in
+  cyber-physical environments, Future Generation Computer Systems 120 (2021)
+  250--265.
+\newblock \href {https://doi.org/10.1016/j.future.2021.05.002}
+  {\path{doi:10.1016/j.future.2021.05.002}}.
+
+\bibitem{wang2024fgcs}
+J.~Wang, H.~Li, Y.~Zhao, Iot-enabled smart microgrids: An edge computing
+  perspective for scalable energy management, Future Generation Computer
+  Systems 152 (2024) 305--320.
+\newblock \href {https://doi.org/10.1016/j.future.2024.02.008}
+  {\path{doi:10.1016/j.future.2024.02.008}}.
+
+\bibitem{chen2023fgcs}
+X.~Chen, L.~Zhang, Network uncertainty and distributed control in
+  cyber-physical power systems, Future Generation Computer Systems 148 (2023)
+  15--28.
+\newblock \href {https://doi.org/10.1016/j.future.2023.04.011}
+  {\path{doi:10.1016/j.future.2023.04.011}}.
+
+\bibitem{liu2025fgcs}
+Y.~Liu, M.~Wang, K.~Zheng, Bounded-time task scheduling for edge nodes in
+  critical infrastructure, Future Generation Computer Systems 160 (2025)
+  400--412.
+\newblock \href {https://doi.org/10.1016/j.future.2025.07.015}
+  {\path{doi:10.1016/j.future.2025.07.015}}.
+
+\bibitem{parisio2014model}
+A.~Parisio, C.~Rinaldi, L.~Glielmo, A model predictive control approach to
+  microgrid operation optimization, IEEE Transactions on Control Systems
+  Technology 22~(5) (2014) 1813--1827.
+
+\bibitem{li2025twotimescale}
+D.~Li, L.~Ren, F.~Liu, J.~Gao, K.~Ma, Two-time scale microgrid scheduling based
+  on power fluctuation mitigation priority and model predictive control, Energy
+  324 (2025) 135760.
+\newblock \href {https://doi.org/10.1016/j.energy.2025.135760}
+  {\path{doi:10.1016/j.energy.2025.135760}}.
+
+\bibitem{yang2025shieldeddrl}
+J.~Yang, S.~Du, P.~Chen, S.~Liu, B.~Chen, Physics-shielded deep reinforcement
+  learning for safe energy management of microgrids with battery health
+  consideration, Journal of the Franklin Institute 362~(16) (2025) 108112.
+\newblock \href {https://doi.org/10.1016/j.jfranklin.2025.108112}
+  {\path{doi:10.1016/j.jfranklin.2025.108112}}.
+
+\bibitem{guerrero2010hierarchical}
+J.~M. Guerrero, J.~C. Vasquez, J.~Matas, L.~G. De~Vicu{\~n}a, M.~Castilla,
+  Hierarchical control of droop-controlled ac and dc microgrids—a general
+  approach toward standardization, IEEE Transactions on Industrial Electronics
+  58~(1) (2010) 158--172.
+
+\bibitem{antoniadou2016survey}
+K.~E. Antoniadou-Plytaria, I.~N. Kouveliotis-Lysikatos, P.~S. Georgilakis,
+  N.~D. Hatziargyriou, Distributed and decentralized voltage control of smart
+  distribution networks: Models, methods, and future research, IEEE
+  Transactions on Smart Grid 8~(6) (2017) 2999--3008.
+\newblock \href {https://doi.org/10.1109/TSG.2017.2679238}
+  {\path{doi:10.1109/TSG.2017.2679238}}.
+
+\bibitem{rocabert2012control}
+J.~Rocabert, A.~Luna, F.~Blaabjerg, P.~Rodr{\'{i}}guez, Control of power
+  converters in {AC} microgrids, IEEE Transactions on Power Electronics 27~(11)
+  (2012) 4734--4749.
+\newblock \href {https://doi.org/10.1109/TPEL.2012.2199334}
+  {\path{doi:10.1109/TPEL.2012.2199334}}.
+
+\bibitem{de2007hierarchical}
+K.~De~Brabandere, B.~Bolsens, J.~Van~den Keybus, A.~Woyte, J.~Driesen,
+  R.~Belmans, A voltage and frequency droop control method for parallel
+  inverters, IEEE Transactions on Power Electronics 22~(4) (2007) 1107--1115.
+\newblock \href {https://doi.org/10.1109/TPEL.2007.900456}
+  {\path{doi:10.1109/TPEL.2007.900456}}.
+
+\bibitem{morstyn2018control}
+T.~Morstyn, B.~Hredzak, G.~D. Demetriades, V.~G. Agelidis, Unified distributed
+  control for dc microgrid operating modes, IEEE Transactions on Power Systems
+  31~(1) (2016) 802--812.
+\newblock \href {https://doi.org/10.1109/TPWRS.2015.2406871}
+  {\path{doi:10.1109/TPWRS.2015.2406871}}.
+
+\bibitem{nunna2013multiagent}
+H.~S. V. S.~K. Nunna, S.~Doolla, Multiagent-based distributed-energy-resource
+  management for intelligent microgrids, IEEE Transactions on Industrial
+  Electronics 60~(4) (2013) 1678--1687.
+\newblock \href {https://doi.org/10.1109/TIE.2012.2193857}
+  {\path{doi:10.1109/TIE.2012.2193857}}.
+
+\bibitem{gundogdu2018}
+B.~Gundogdu, D.~T. Gladwin, A fast battery cycle counting method for grid-tied
+  battery energy storage system subjected to microcycles, in: 2018
+  International Electrical Engineering Congress (iEECON), 2018.
+\newblock \href {https://doi.org/10.1109/IEECON.2018.8712263}
+  {\path{doi:10.1109/IEECON.2018.8712263}}.
+
+\bibitem{he2018convex}
+G.~He, Q.~Chen, C.~Kang, Q.~Xia, J.~Hunt, A convex cycle-based degradation
+  model for battery energy storage planning and operation, IEEE Transactions on
+  Power Systems 33~(5) (2018) 5827--5838.
+
+\bibitem{garcia2021battery}
+C.~A. Garc{\'{i}}a-Vel{\'{a}}squez, S.~Leva, Review of battery energy storage
+  system for power grid resilience, Energies 14~(18) (2021) 5908.
+\newblock \href {https://doi.org/10.3390/en14185908}
+  {\path{doi:10.3390/en14185908}}.
+
+\bibitem{alshammari2026emsdesign}
+N.~F. Alshammari, S.~Alshahr, S.~Barakat, How energy management strategy shapes
+  optimal microgrid design: A comparative analysis for ev charging stations,
+  Applied Energy 407 (2026) 127352.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2026.127352}
+  {\path{doi:10.1016/j.apenergy.2026.127352}}.
+
+\bibitem{dutta2017load}
+S.~Dutta, A.~Sharma, et~al., Load and renewable energy forecasting for a
+  microgrid using persistence technique, Energy Procedia 143 (2017) 617--622.
+
+\bibitem{benamara2025jer}
+M.~Ben~Amara, E.~Rdhaounia, M.~Balghouthi, Adaptive solar irradiance
+  forecasting in arid regions: Enhancing accuracy with localized atmospheric
+  adjustments, Journal of Engineering Research 13~(3) (2025) 2663--2679.
+\newblock \href {https://doi.org/10.1016/j.jer.2024.07.008}
+  {\path{doi:10.1016/j.jer.2024.07.008}}.
+
+\bibitem{brown2026bayesian}
+P.~Brown, M.~G\"ol, Bayesian probabilistic photovoltaic power forecasting and
+  stochastic model-predictive control for an agricultural microgrid, Solar
+  Energy 304 (2026) 114197.
+\newblock \href {https://doi.org/10.1016/j.solener.2025.114197}
+  {\path{doi:10.1016/j.solener.2025.114197}}.
+
+\bibitem{marcos2014}
+J.~Marcos, L.~Marroyo, E.~Lorenzo, D.~Alvira, E.~Izco, Control strategies to
+  smooth short-term power fluctuations in large pv plants, Energies 7~(10)
+  (2014) 6593--6619.
+
+\bibitem{damico2022}
+G.~D'Amico, F.~Petroni, S.~Vergine, Ramp rate limitation of wind power: An
+  overview, Energies 15~(16) (2022) 5850.
+
+\bibitem{hoke2014accounting}
+A.~Hoke, A.~Brissette, K.~Smith, A.~Pratt, D.~Maksimovic, Accounting for
+  lithium-ion battery degradation in electric vehicle charging optimization,
+  IEEE Journal of Emerging and Selected Topics in Power Electronics 2~(3)
+  (2014) 691--700.
+
+\bibitem{soto2022}
+A.~Soto, A.~Garc{\'i}a, J.~Sanz, Impact of micro-cycles on the lifetime of
+  lithium-ion batteries, Journal of Energy Storage 50 (2022) 104176.
+
+\bibitem{attia2022}
+P.~M. Attia, A.~Bills, F.~B. Planella, et~al., Review---knees in lithium-ion
+  battery aging trajectories, Journal of The Electrochemical Society 169~(6)
+  (2022) 060517.
+
+\bibitem{wang2011lfp}
+J.~Wang, P.~Liu, J.~Hicks-Garner, E.~Sherman, S.~Soukiazian, M.~Verbrugge,
+  H.~Tataria, J.~Musser, P.~Finamore, Cycle-life model for graphite-lifepo4
+  cells, Journal of Power Sources 196~(8) (2011) 3942--3948.
+\newblock \href {https://doi.org/10.1016/j.jpowsour.2010.11.134}
+  {\path{doi:10.1016/j.jpowsour.2010.11.134}}.
+
+\bibitem{yan2018lifeloss}
+G.~Yan, D.~Liu, J.~Li, G.~Mu, A cost accounting method of the li-ion battery
+  energy storage system for frequency regulation considering the effect of life
+  degradation, Protection and Control of Modern Power Systems 3~(1) (2018)
+  1--9.
+\newblock \href {https://doi.org/10.1186/s41601-018-0076-2}
+  {\path{doi:10.1186/s41601-018-0076-2}}.
+
+\end{thebibliography}

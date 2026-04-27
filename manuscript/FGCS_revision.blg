@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: FGCS_revision.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+The style file: elsarticle-num.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Database file #1: cas-refs.bib
+Warning--empty pages in gundogdu2018
+You've used 37 entries,
+            2952 wiz_defined-function locations,
+            921 strings with 12791 characters,
+and the built_in function-call counts, 12170 in all, are:
+= -- 1215
+> -- 433
+< -- 0
++ -- 169
+- -- 132
+* -- 1047
+:= -- 1700
+add.period$ -- 63
+call.type$ -- 37
+change.case$ -- 38
+chr.to.int$ -- 0
+cite$ -- 38
+duplicate$ -- 299
+empty$ -- 1260
+format.name$ -- 168
+if$ -- 3022
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 37
+newline$ -- 145
+num.names$ -- 37
+pop$ -- 161
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 722
+stack$ -- 0
+substring$ -- 828
+swap$ -- 88
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 97
+width$ -- 39
+write$ -- 356
+(There was 1 warning)

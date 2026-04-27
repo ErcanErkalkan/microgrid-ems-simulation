@@ -118,11 +118,23 @@ def compute_metrics(sim: pd.DataFrame, site: SiteConfig) -> dict[str, Any]:
     flip_per_hour = flips / horizon_hours if horizon_hours > 0 else 0.0
     flip_per_day = flips / (horizon_hours / 24.0) if horizon_hours > 0 else 0.0
 
+    if 'is_disconnected' in sim.columns:
+        is_disconnected = sim['is_disconnected'].to_numpy(dtype=bool)
+        offline_ticks = np.sum(is_disconnected)
+        if offline_ticks > 0:
+            offline_violations = np.sum(is_disconnected & (imp_v | exp_v))
+            resilience_score = 100.0 * (1.0 - (offline_violations / offline_ticks))
+        else:
+            resilience_score = 100.0
+    else:
+        resilience_score = 100.0
+
     metrics = {
         'ramp95_kw_per_min': quantile_safe(ramp, 0.95),
         'cap_violation_pct_import': 100.0 * np.mean(imp_v),
         'cap_violation_pct_export': 100.0 * np.mean(exp_v),
         'cap_violation_pct_total': 100.0 * np.mean(imp_v | exp_v),
+        'resilience_score': float(resilience_score),
         'soc_band_residency': float(soc_band_residency),
         'throughput_kwh': float(throughput),
         'efc': float(efc),
