@@ -47,7 +47,7 @@ class SiteConfig:
 
 @dataclass
 class SyntheticConfig:
-    hours: int = 48
+    hours: int = 24
     load_base_kw: float = 48.0
     load_daily_amp_kw: float = 12.0
     load_noise_std_kw: float = 2.5
@@ -72,20 +72,20 @@ class SyntheticConfig:
 class OptimConfig:
     rho_imp: float = 1e4
     rho_exp: float = 1e4
-    lambda_grid: Sequence[float] = field(default_factory=lambda: [1e-3, 1e-2, 1e-1, 1.0, 10.0])
-    mu_grid: Sequence[float] = field(default_factory=lambda: [1e-3, 1e-2, 1e-1, 1.0])
-    nu_grid: Sequence[float] = field(default_factory=lambda: [1e-4, 1e-3, 1e-2, 1e-1])
+    lambda_grid: Sequence[float] = field(default_factory=lambda: [1e-2, 1e-1, 1.0])
+    mu_grid: Sequence[float] = field(default_factory=lambda: [1e-2])
+    nu_grid: Sequence[float] = field(default_factory=lambda: [1e-3])
     soc_target: float = 0.50
     maxiter_qp: int = 120
     ftol_qp: float = 1e-6
     oracle_global_maxiter: int = 250
-    enable_global_oracle: bool = True
+    enable_global_oracle: bool = False
     oracle_fallback_to_perfect_preview: bool = True
 
 
 @dataclass
 class ExperimentConfig:
-    seeds: Sequence[int] = field(default_factory=lambda: list(range(10)))
+    seeds: Sequence[int] = field(default_factory=lambda: list(range(5)))
     sensitivity_rmax: Sequence[float] = field(default_factory=lambda: [10.0, 15.0, 20.0, 25.0, 30.0])
     sensitivity_tmin: Sequence[int] = field(default_factory=lambda: [0, 1, 2, 3, 5])
     sensitivity_wf: Sequence[int] = field(default_factory=lambda: [3, 5, 7, 9])
