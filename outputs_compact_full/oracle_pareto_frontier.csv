@@ -1,2 +1,0 @@
-reference_type,weight_label,ramp95_kw_per_min,throughput_kwh,efc,t_high_soc_h,ceq_q95,t_high_c_h,idod,label
-OraclePreview,0.01|0.01|0.001,9.602083810067546,0.017398936566240714,8.699468283120357e-05,0.0,3.4621973807376935e-08,0.0,3.3516189955808996e-08,OraclePreview:0.01|0.01|0.001

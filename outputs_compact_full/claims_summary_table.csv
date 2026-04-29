@@ -1,7 +1,0 @@
-Reference,Baseline,Pairs,ramp95_kw_per_min_delta_mean,ramp95_kw_per_min_wins,ramp95_kw_per_min_ties,ramp95_kw_per_min_losses,cap_violation_pct_total_delta_mean,cap_violation_pct_total_wins,cap_violation_pct_total_ties,cap_violation_pct_total_losses,throughput_kwh_delta_mean,throughput_kwh_wins,throughput_kwh_ties,throughput_kwh_losses,lfp_cycle_loss_pct_delta_mean,lfp_cycle_loss_pct_wins,lfp_cycle_loss_pct_ties,lfp_cycle_loss_pct_losses,idod_delta_mean,idod_wins,idod_ties,idod_losses,flip_per_day_delta_mean,flip_per_day_wins,flip_per_day_ties,flip_per_day_losses,all4_nonworse_count
-Proposed,NC,4,-0.03525484869561257,2,2,0,-0.1388888888888889,2,2,0,0.008536697128498125,0,2,2,6.199837535863728e-07,0,2,2,8.074814167730902e-09,0,2,2,4.0,0,2,2,2
-Proposed,GR,4,0.0,0,4,0,0.0,0,4,0,0.0007297168525274966,0,2,2,5.300586125435398e-08,0,2,2,1.321468901316298e-09,0,2,2,0.0,0,4,0,2
-Proposed,RS,4,6.679424389335096,0,0,4,0.0,0,4,0,-18.694857092982296,4,0,0,-0.0010387725769485025,4,0,0,-0.00027371064207359935,4,0,0,-544.0,4,0,0,0
-Proposed,FBRL,4,7.192300807993366,0,0,4,0.0,0,4,0,-17.465804621110543,4,0,0,-0.0009574803503410447,4,0,0,-0.00028626130255492946,4,0,0,-532.0,4,0,0,0
-Proposed,MPC_best_ramp,4,-0.03132103535057951,4,0,0,-0.1388888888888889,2,2,0,-0.0067444909242331775,4,0,0,-4.604204299255395e-07,4,0,0,-4.307284239945266e-09,4,0,0,-64.0,4,0,0,4
-Proposed,MPC_best_balanced,4,-0.03132103535057951,4,0,0,-0.1388888888888889,2,2,0,-0.0067444909242331775,4,0,0,-4.604204299255395e-07,4,0,0,-4.307284239945266e-09,4,0,0,-64.0,4,0,0,4
