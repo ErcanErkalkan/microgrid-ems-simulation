@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microgrid-ems-simulation"
+version = "0.1.0"
+description = "Reproducible benchmarking package for bounded-time edge microgrid EMS controllers."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Ercan Erkalkan", email = "ercan.erkalkan@marmara.edu.tr" }
+]
+keywords = ["microgrid", "energy management", "edge computing", "battery storage", "research software"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "matplotlib",
+  "scipy",
+]
+
+[project.optional-dependencies]
+test = []
+
+[project.urls]
+Homepage = "https://github.com/ErcanErkalkan/microgrid-ems-simulation"
+Repository = "https://github.com/ErcanErkalkan/microgrid-ems-simulation"
+Issues = "https://github.com/ErcanErkalkan/microgrid-ems-simulation/issues"
+
+[project.scripts]
+microgrid-ems-simulation = "jer_microgrid.pipeline:main"
+
+[tool.setuptools.packages.find]
+include = ["jer_microgrid*"]

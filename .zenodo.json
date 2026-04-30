@@ -1,0 +1,21 @@
+{
+  "title": "Microgrid EMS Simulation",
+  "description": "A Python package for reproducible benchmarking of bounded-time edge energy-management controllers for synthetic microgrid scenarios.",
+  "creators": [
+    {
+      "name": "Erkalkan, Ercan",
+      "affiliation": "Department of Computer Technologies, Vocational School of Technical Sciences, Marmara University"
+    }
+  ],
+  "keywords": [
+    "microgrid",
+    "energy management system",
+    "edge computing",
+    "battery storage",
+    "research software",
+    "reproducible benchmark"
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open"
+}

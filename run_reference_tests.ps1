@@ -8,7 +8,8 @@ if (-not (Test-Path .venv)) {
 }
 
 & .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -e .[test]
 
 Write-Host "`n[1/2] Running unit tests..."
 python -m unittest discover -s tests

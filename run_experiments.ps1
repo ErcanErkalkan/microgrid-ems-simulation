@@ -9,7 +9,8 @@ if (-not (Test-Path .venv)) {
 }
 
 & .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -e .
 
 if ($Smoke) {
     if ($PublicationPackage) {

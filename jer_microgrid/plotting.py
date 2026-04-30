@@ -26,7 +26,6 @@ CONTROLLER_STYLES: dict[str, dict[str, object]] = {
     'RS': {'color': '#d48a00', 'label': 'RS', 'linewidth': 1.9, 'linestyle': '-'},
     'FBRL': {'color': '#7a3ea1', 'label': 'FBRL', 'linewidth': 1.9, 'linestyle': '-'},
     'NC': {'color': '#8c3d3d', 'label': 'NC', 'linewidth': 1.8, 'linestyle': ':'},
-    'MPC_ref': {'color': '#005f99', 'label': 'MPC_ref', 'linewidth': 1.9, 'linestyle': '-.'},
     'MPC_best_balanced': {'color': '#005f99', 'label': 'MPC_best_balanced', 'linewidth': 1.9, 'linestyle': '-.'},
     'MPC_best_ramp': {'color': '#5b7fff', 'label': 'MPC_best_ramp', 'linewidth': 1.9, 'linestyle': '-.'},
 }

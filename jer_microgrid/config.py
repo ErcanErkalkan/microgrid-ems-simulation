@@ -108,7 +108,7 @@ MAIN_METRICS: List[str] = [
 ]
 
 CONTROLLERS_MAIN: List[str] = [
-    'Proposed', 'NC', 'GR', 'RS', 'FBRL', 'MPC_ref', 'MPC_best_ramp', 'MPC_best_balanced'
+    'Proposed', 'NC', 'GR', 'RS', 'FBRL', 'MPC_best_ramp', 'MPC_best_balanced'
 ]
 
 ABLATION_MAP = {

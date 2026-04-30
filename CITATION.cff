@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Microgrid EMS Simulation"
+authors:
+  - family-names: Erkalkan
+    given-names: Ercan
+    email: ercan.erkalkan@marmara.edu.tr
+    affiliation: "Department of Computer Technologies, Vocational School of Technical Sciences, Marmara University"
+type: software
+repository-code: "https://github.com/ErcanErkalkan/microgrid-ems-simulation"
+abstract: "A Python package for reproducible benchmarking of bounded-time edge energy-management controllers for synthetic microgrid scenarios."
+keywords:
+  - microgrid
+  - energy management system
+  - research software
+  - edge computing
+  - battery storage
+  - reproducible benchmark
+license: MIT
+version: 0.1.0
+date-released: 2026-04-29
