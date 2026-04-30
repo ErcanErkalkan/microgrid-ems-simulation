@@ -9,6 +9,13 @@ SUSCOM.zip
 data_cache/
 outputs_evidence_upgrade/extended_synthetic/
 outputs_evidence_upgrade/external_trace/
+outputs_smoke/
+outputs_local/
+notebook_outputs_smoke/
+notebook_outputs_reference/
+build/
+dist/
+*.egg-info/
 
 # Exclude manuscript build artifacts left at repo root.
 elsarticle-template-num.aux

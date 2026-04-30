@@ -1,5 +1,5 @@
 param(
-    [string]$OutDir = "outputs_full",
+    [string]$OutDir = "outputs_reference",
     [switch]$Smoke,
     [switch]$PublicationPackage
 )

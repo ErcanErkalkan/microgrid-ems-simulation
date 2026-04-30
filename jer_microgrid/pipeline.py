@@ -125,7 +125,7 @@ def _select_best_balanced(frontier: pd.DataFrame, best_ramp: float, tol: float =
 def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConfig, exp: ExperimentConfig,
                       *, smoke: bool = False, publication_package: bool = False) -> dict[str, Any]:
     outdir = ensure_dir(exp.output_dir)
-    figs_dir = ensure_dir(outdir / 'fig')
+    figures_dir = ensure_dir(outdir / 'figures')
 
     dataset = generate_dataset(exp.seeds, site, synth)
     dataset.to_csv(outdir / 'synthetic_dataset.csv', index=False)
@@ -329,35 +329,35 @@ def run_full_pipeline(site: SiteConfig, synth: SyntheticConfig, optim: OptimConf
     # Figures.
     save_ramp_cdf(
         tick_df[tick_df['controller'].isin(rep_plot_controllers)],
-        figs_dir / 'ramp_cdf_ccdf.pdf',
+        figures_dir / 'ramp_cdf_ccdf.pdf',
         ['GR', 'Proposed', 'RS', 'FBRL'],
     )
     save_representative_timeseries(
         rep_tick_df,
-        figs_dir / 'representative_timeseries.pdf',
+        figures_dir / 'representative_timeseries.pdf',
         ['GR', 'Proposed', 'RS', 'FBRL'],
         n_points=240,
     )
     save_metric_boxplot(
         metrics_df[metrics_df['controller'].isin(['Proposed', 'GR', 'FBRL'])],
-        figs_dir / 'modeled_cycle_loss_boxplot.pdf',
+        figures_dir / 'modeled_cycle_loss_boxplot.pdf',
         'lfp_cycle_loss_pct',
         ['Proposed', 'GR', 'FBRL'],
         ylabel='Modeled LFP cycle-life loss (%)',
         title='Primary 24-hour benchmark: chemistry-calibrated cycling indicator',
     )
     if not hist_df.empty:
-        save_rainflow_hist(hist_df, figs_dir / 'rainflow_hist.pdf', ['Proposed', 'FBRL', 'RS', 'MPC_best_balanced'])
+        save_rainflow_hist(hist_df, figures_dir / 'rainflow_hist.pdf', ['Proposed', 'FBRL', 'RS', 'MPC_best_balanced'])
     save_stress_boxplots(
         metrics_df[metrics_df['controller'].isin(['Proposed', 'FBRL', 'MPC_best_balanced'])],
-        figs_dir / 'stress_proxy_boxplots.pdf',
+        figures_dir / 'stress_proxy_boxplots.pdf',
         ['throughput_kwh', 'lfp_cycle_loss_pct', 't_high_soc_h', 't_high_c_h', 'idod'],
         ['Proposed', 'FBRL', 'MPC_best_balanced'],
     )
-    save_pareto_frontier(mpc_frontier, figs_dir / 'mpc_pareto_frontier.pdf')
+    save_pareto_frontier(mpc_frontier, figures_dir / 'mpc_pareto_frontier.pdf')
     if not sensitivity_df.empty:
         pivot = sensitivity_df.pivot(index='tmin', columns='rmax', values='idod')
-        save_sensitivity_heatmap(pivot, figs_dir / 'sensitivity_rmax_tmin_idod.pdf', 'Sensitivity: IDOD over Rmax and Tmin')
+        save_sensitivity_heatmap(pivot, figures_dir / 'sensitivity_rmax_tmin_idod.pdf', 'Sensitivity: IDOD over Rmax and Tmin')
 
     save_json(outdir / 'run_manifest.json', {
         'site': site.__dict__,
@@ -406,14 +406,16 @@ def build_default_configs(smoke: bool = False):
     site = SiteConfig()
     synth = SyntheticConfig()
     optim = OptimConfig()
-    exp = ExperimentConfig(output_dir='outputs_smoke' if smoke else 'outputs_full')
+    exp = ExperimentConfig(output_dir='outputs_smoke' if smoke else 'outputs_reference')
     if smoke:
+        site = replace(site, w_f=3, w_ema=3, horizon_k=3)
         exp.seeds = [0]
-        synth.hours = 6
+        synth.hours = 1
         synth.scenario_names = ['mixed']
         optim.lambda_grid = [1e-2]
         optim.mu_grid = [1e-2]
         optim.nu_grid = [1e-3]
+        optim.maxiter_qp = 30
         optim.enable_global_oracle = False
         exp.sensitivity_rmax = [20.0]
         exp.sensitivity_tmin = [3]
@@ -434,7 +436,7 @@ def main():
     results = run_full_pipeline(site, synth, optim, exp, smoke=args.smoke, publication_package=args.publication_package)
     if args.publication_package:
         from .publication import run_publication_package
-        run_publication_package(site, synth, exp, Path(results['output_dir']) / 'publication')
+        run_publication_package(site, synth, exp, Path(results['output_dir']) / 'publication_package')
     print(f"Finished. Outputs written to: {results['output_dir']}")
 
 
