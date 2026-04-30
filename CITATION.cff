@@ -4,6 +4,7 @@ title: "Microgrid EMS Simulation"
 authors:
   - family-names: Erkalkan
     given-names: Ercan
+    orcid: "https://orcid.org/0000-0001-9259-7112"
     email: ercan.erkalkan@marmara.edu.tr
     affiliation: "Department of Computer Technologies, Vocational School of Technical Sciences, Marmara University"
 type: software
