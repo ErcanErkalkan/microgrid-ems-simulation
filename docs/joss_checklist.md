@@ -9,6 +9,7 @@ This checklist maps the repository to the JOSS review expectations.
 - Bibliography: `paper/paper.bib`.
 - Citation metadata: `CITATION.cff`.
 - Zenodo metadata: `.zenodo.json`.
+- Archived release DOI: `10.5281/zenodo.19924269`.
 - README with statement of need, installation, example usage, tests, and
   reproducibility notes.
 - Core API overview: `docs/api.md`.
@@ -31,9 +32,6 @@ These cannot be completed from the local workspace alone:
 - Make the GitHub repository public before submission.
 - Enable GitHub Issues for reviewer interaction.
 - Tag a release, for example `v0.1.0`.
-- Archive the tagged release on Zenodo and obtain a DOI.
-- Add the Zenodo DOI to `paper/paper.bib`, `paper/paper.md`, `CITATION.cff`,
-  and `.zenodo.json`.
 - Add the author's ORCID to `paper/paper.md` if one is available.
 - Confirm whether the public repository shows at least six months of open
   development history; JOSS may desk-reject repositories that appear newly

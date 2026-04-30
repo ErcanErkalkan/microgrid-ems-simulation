@@ -63,6 +63,11 @@ python main.py --output-dir outputs_reference --publication-package
 The pipeline writes CSV tables, LaTeX tables, PDF figures, and
 `run_manifest.json` into the selected output directory.
 
+## Archived Release
+
+The `v0.1.0` release is archived on Zenodo:
+<https://doi.org/10.5281/zenodo.19924269>.
+
 ## Repository Layout
 
 - `jer_microgrid/`: reusable Python package.
@@ -142,10 +147,8 @@ python main.py --smoke --output-dir outputs_smoke
 ## Citation
 
 Use `CITATION.cff` for software citation metadata. A JOSS paper draft is
-available at `paper/paper.md`.
-
-Before journal submission, tag a release and archive it on Zenodo. Add the
-resulting DOI to `CITATION.cff`, `.zenodo.json`, and the JOSS paper references.
+available at `paper/paper.md`. The archived release DOI is
+`10.5281/zenodo.19924269`.
 
 ## JOSS Submission Notes
 

@@ -8,6 +8,8 @@ authors:
     affiliation: "Department of Computer Technologies, Vocational School of Technical Sciences, Marmara University"
 type: software
 repository-code: "https://github.com/ErcanErkalkan/microgrid-ems-simulation"
+url: "https://doi.org/10.5281/zenodo.19924269"
+doi: "10.5281/zenodo.19924269"
 abstract: "A Python package for reproducible benchmarking of bounded-time edge energy-management controllers for synthetic microgrid scenarios."
 keywords:
   - microgrid
@@ -18,4 +20,4 @@ keywords:
   - reproducible benchmark
 license: MIT
 version: 0.1.0
-date-released: 2026-04-29
+date-released: 2026-04-30

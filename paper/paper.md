@@ -13,7 +13,7 @@ authors:
 affiliations:
   - name: Department of Computer Technologies, Vocational School of Technical Sciences, Marmara University, Turkey
     index: 1
-date: 29 April 2026
+date: 30 April 2026
 bibliography: paper.bib
 ---
 
@@ -152,8 +152,10 @@ released under the MIT License. The repository includes installation
 instructions, tests, a smoke benchmark command, the current reproducibility
 artifact, and citation metadata.
 
-The included `CITATION.cff` and `.zenodo.json` files provide software-citation
-and release-archive metadata for the tagged version submitted for review.
+The archived `v0.1.0` software release is available from Zenodo with DOI
+<https://doi.org/10.5281/zenodo.19924269> [@microgridems2026]. The included
+`CITATION.cff` and `.zenodo.json` files provide software-citation and
+release-archive metadata for the tagged version submitted for review.
 
 The smoke benchmark can be run with:
 
